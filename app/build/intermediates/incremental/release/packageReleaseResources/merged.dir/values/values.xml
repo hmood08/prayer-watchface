@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">أوقات الصلاة</string>
+    <string name="complication_prayer_current">الصلاة الحالية</string>
+    <string name="complication_prayer_next">الصلاة التالية</string>
+</resources>

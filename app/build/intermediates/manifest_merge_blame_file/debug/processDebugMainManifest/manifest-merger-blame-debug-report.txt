@@ -1,0 +1,226 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.prayertime.watchface"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+7-->INJECTED
+8        android:minSdkVersion="30"
+8-->INJECTED
+9        android:targetSdkVersion="34" />
+9-->INJECTED
+10
+11    <uses-feature android:name="android.hardware.type.watch" />
+11-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:5:5-64
+11-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:5:19-61
+12
+13    <uses-permission android:name="com.google.android.wearable.permission.BIND_WATCH_FACE_CONTROL" />
+13-->[androidx.wear.watchface:watchface-client:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\b98561d7f041243fdc5c68c770f514b0\workspace\transformed\watchface-client-1.2.1\AndroidManifest.xml:22:5-102
+13-->[androidx.wear.watchface:watchface-client:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\b98561d7f041243fdc5c68c770f514b0\workspace\transformed\watchface-client-1.2.1\AndroidManifest.xml:22:22-99
+14
+15    <queries>
+15-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:22:5-35:15
+16        <intent>
+16-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:23:9-27:18
+17
+18            <!-- Needed to have visibility on complication data sources installed on the device. -->
+19            <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+19-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:26:13-112
+19-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:26:21-109
+20        </intent>
+21        <intent>
+21-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:28:9-34:18
+22
+23            <!-- Needed to have visibility on launcher items to handle app shortcuts in complications. -->
+24            <action android:name="android.intent.action.MAIN" />
+24-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:31:13-65
+24-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:31:21-62
+25
+26            <category android:name="android.intent.category.LAUNCHER" />
+26-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:33:13-73
+26-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:33:23-70
+27        </intent>
+28    </queries>
+29
+30    <permission
+30-->[androidx.core:core:1.12.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\5c3f3a42f4d77b73ec5357655c17e0b5\workspace\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
+31        android:name="com.prayertime.watchface.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+31-->[androidx.core:core:1.12.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\5c3f3a42f4d77b73ec5357655c17e0b5\workspace\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
+32        android:protectionLevel="signature" />
+32-->[androidx.core:core:1.12.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\5c3f3a42f4d77b73ec5357655c17e0b5\workspace\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
+33
+34    <uses-permission android:name="com.prayertime.watchface.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+34-->[androidx.core:core:1.12.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\5c3f3a42f4d77b73ec5357655c17e0b5\workspace\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
+34-->[androidx.core:core:1.12.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\5c3f3a42f4d77b73ec5357655c17e0b5\workspace\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
+35
+36    <application
+36-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:7:5-26:19
+37        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+37-->[androidx.core:core:1.12.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\5c3f3a42f4d77b73ec5357655c17e0b5\workspace\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
+38        android:debuggable="true"
+39        android:extractNativeLibs="false"
+39-->INJECTED
+40        android:hasCode="false"
+40-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:10:9-32
+41        android:icon="@drawable/preview"
+41-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:9:9-41
+42        android:label="@string/app_name"
+42-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:8:9-41
+43        android:testOnly="true" >
+44        <property
+44-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:12:9-95
+45            android:name="com.google.wear.watchface.format.version"
+45-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:12:19-74
+46            android:value="2" />
+46-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:12:75-92
+47
+48        <service
+48-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:14:9-25:19
+49            android:name="com.google.wear.watchface.format.WatchFaceFormatService"
+49-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:15:13-83
+50            android:exported="true"
+50-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:17:13-36
+51            android:permission="android.permission.BIND_WALLPAPER" >
+51-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:16:13-67
+52            <intent-filter>
+52-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:18:13-21:29
+53                <action android:name="android.service.wallpaper.WallpaperService" />
+53-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:19:17-85
+53-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:19:25-82
+54
+55                <category android:name="com.google.android.clockwork.watchfaces.category.WATCH_FACE" />
+55-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:20:17-104
+55-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:20:27-101
+56            </intent-filter>
+57
+58            <meta-data
+58-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:23:13-108
+59                android:name="com.google.wear.watchface.format"
+59-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:23:24-71
+60                android:resource="@raw/watchface" />
+60-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:23:72-105
+61            <meta-data
+61-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:24:13-125
+62                android:name="com.google.android.clockwork.watchface.preview"
+62-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:24:24-85
+63                android:resource="@drawable/preview" />
+63-->D:\apps\clock\prayer_watchface\app\src\main\AndroidManifest.xml:24:86-122
+64        </service>
+65
+66        <uses-library
+66-->[androidx.wear.watchface:watchface-complications-data:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\d561169558464a1c4098ef0533ad15d4\workspace\transformed\watchface-complications-data-1.2.1\AndroidManifest.xml:8:9-10:40
+67            android:name="com.google.android.wearable"
+67-->[androidx.wear.watchface:watchface-complications-data:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\d561169558464a1c4098ef0533ad15d4\workspace\transformed\watchface-complications-data-1.2.1\AndroidManifest.xml:9:13-55
+68            android:required="false" />
+68-->[androidx.wear.watchface:watchface-complications-data:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\d561169558464a1c4098ef0533ad15d4\workspace\transformed\watchface-complications-data-1.2.1\AndroidManifest.xml:10:13-37
+69
+70        <service
+70-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:42:9-58:19
+71            android:name="androidx.wear.watchface.control.WatchFaceControlService"
+71-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:43:13-83
+72            android:directBootAware="true"
+72-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:44:13-43
+73            android:enabled="@bool/watch_face_instance_service_enabled"
+73-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:45:13-72
+74            android:exported="true"
+74-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:46:13-36
+75            android:permission="com.google.android.wearable.permission.BIND_WATCH_FACE_CONTROL" >
+75-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:47:13-96
+76            <meta-data
+76-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:48:13-50:67
+77                android:name="androidx.wear.watchface.api_version"
+77-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:49:17-67
+78                android:value="@integer/watch_face_api_version" />
+78-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:50:17-64
+79            <meta-data
+79-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:51:13-53:67
+80                android:name="androidx.wear.watchface.xml_version"
+80-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:52:17-67
+81                android:value="@integer/watch_face_xml_version" />
+81-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:53:17-64
+82
+83            <intent-filter>
+83-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:55:13-57:29
+84                <action android:name="com.google.android.wearable.action.WATCH_FACE_CONTROL" />
+84-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:56:17-96
+84-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:56:25-93
+85            </intent-filter>
+86        </service>
+87        <!--
+88      Used to configure complications. Applications can remove this using:
+89      <activity
+90	  android:name="androidx.wear.watchface.ComplicationHelperActivity"
+91	  tools:node="remove" />
+92      in their manifest if they do not support complications and want to allow
+93      R8 to remove the code associated with this activity. If the activity is
+94      remove while it is needed, this may lead to a runtime exception of type
+95      android.content.ActivityNotFoundException.
+96        -->
+97        <activity
+97-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:70:9-74:75
+98            android:name="androidx.wear.watchface.ComplicationHelperActivity"
+98-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:71:13-78
+99            android:excludeFromRecents="true"
+99-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:72:13-46
+100            android:exported="false"
+100-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:73:13-37
+101            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+101-->[androidx.wear.watchface:watchface:1.2.1] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\075f90449eda3b0b3b2f68710ca0c70c\workspace\transformed\watchface-1.2.1\AndroidManifest.xml:74:13-72
+102
+103        <provider
+103-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20
+104            android:name="androidx.startup.InitializationProvider"
+104-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:25:13-67
+105            android:authorities="com.prayertime.watchface.androidx-startup"
+105-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:26:13-68
+106            android:exported="false" >
+106-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:27:13-37
+107            <meta-data
+107-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+108                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+108-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+109                android:value="androidx.startup" />
+109-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+110        </provider>
+111
+112        <receiver
+112-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+113            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+113-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+114            android:directBootAware="false"
+114-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+115            android:enabled="true"
+115-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+116            android:exported="true"
+116-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+117            android:permission="android.permission.DUMP" >
+117-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+118            <intent-filter>
+118-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+119                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+119-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+119-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+120            </intent-filter>
+121            <intent-filter>
+121-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+122                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+122-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+122-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+123            </intent-filter>
+124            <intent-filter>
+124-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+125                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+125-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+125-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+126            </intent-filter>
+127            <intent-filter>
+127-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+128                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+128-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+128-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\Lenovo\.gradle\caches\9.3.1\transforms\4956c1ec5c0a34592696b5a31b3085e9\workspace\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+129            </intent-filter>
+130        </receiver>
+131    </application>
+132
+133</manifest>

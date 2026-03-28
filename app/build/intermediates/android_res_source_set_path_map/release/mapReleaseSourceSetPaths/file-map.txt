@@ -1,0 +1,8 @@
+com.prayertime.watchface.app-pngs-0 D:\apps\clock\prayer_watchface\app\build\generated\res\pngs\release
+com.prayertime.watchface.app-resValues-1 D:\apps\clock\prayer_watchface\app\build\generated\res\resValues\release
+com.prayertime.watchface.app-updated_navigation_xml-2 D:\apps\clock\prayer_watchface\app\build\generated\updated_navigation_xml\release
+com.prayertime.watchface.app-packageReleaseResources-3 D:\apps\clock\prayer_watchface\app\build\intermediates\incremental\release\packageReleaseResources\merged.dir
+com.prayertime.watchface.app-packageReleaseResources-4 D:\apps\clock\prayer_watchface\app\build\intermediates\incremental\release\packageReleaseResources\stripped.dir
+com.prayertime.watchface.app-release-5 D:\apps\clock\prayer_watchface\app\build\intermediates\merged_res\release\mergeReleaseResources
+com.prayertime.watchface.app-main-6 D:\apps\clock\prayer_watchface\app\src\main\res
+com.prayertime.watchface.app-release-7 D:\apps\clock\prayer_watchface\app\src\release\res

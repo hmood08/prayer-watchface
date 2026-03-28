@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إعداد محاكي Wear OS</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#04080C; color:#EEF4F0; font-family:'Cairo',sans-serif; padding:24px 16px 60px; }
+.page { max-width:800px; margin:0 auto; }
+
+.header { text-align:center; padding:24px; background:linear-gradient(135deg,rgba(26,155,138,0.08),rgba(201,168,76,0.06)); border:1px solid rgba(26,155,138,0.15); border-radius:18px; margin-bottom:28px; }
+.header h1 { font-size:22px; color:#2DCFB8; margin-bottom:6px; }
+.header p  { font-size:13px; color:#8EA99B; line-height:1.8; }
+
+/* Steps */
+.step { display:flex; gap:16px; margin-bottom:20px; }
+.step-num { width:36px; height:36px; border-radius:50%; background:rgba(26,155,138,0.12); border:2px solid #1A9B8A; color:#2DCFB8; font-size:16px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'Rajdhani',sans-serif; margin-top:2px; }
+.step-body { flex:1; }
+.step-body h3 { font-size:15px; color:#EEF4F0; margin-bottom:6px; }
+.step-body p  { font-size:12px; color:#8EA99B; line-height:1.9; margin-bottom:8px; }
+
+/* Screen mockups */
+.mock {
+  background:#060D14; border:1px solid rgba(255,255,255,0.07); border-radius:10px;
+  padding:14px; margin:8px 0; position:relative;
+}
+.mock-label { position:absolute; top:8px; left:10px; font-size:9px; color:#3A5040; letter-spacing:2px; }
+.title-bar { height:26px; background:#111E28; border-radius:6px; display:flex; align-items:center; padding:0 10px; gap:6px; margin-bottom:10px; }
+.dot { width:7px; height:7px; border-radius:50%; }
+.dr { background:#E74C3C; } .dy { background:#F39C12; } .dg { background:#27AE60; }
+.win-title { font-size:11px; color:#8EA99B; margin-right:auto; }
+
+.row { display:flex; align-items:center; gap:8px; padding:5px 8px; border-radius:5px; font-size:12px; margin:2px 0; }
+.row.hi { background:rgba(26,155,138,0.18); color:#2DCFB8; }
+.row.dim { color:#8EA99B; }
+.row .arrow { color:#3A5040; font-size:10px; }
+
+.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:10px; font-weight:600; margin:0 2px; }
+.tag-green  { background:rgba(39,174,96,0.15); color:#2ECC71; border:1px solid rgba(39,174,96,0.3); }
+.tag-teal   { background:rgba(26,155,138,0.15); color:#2DCFB8; border:1px solid rgba(26,155,138,0.3); }
+.tag-gold   { background:rgba(201,168,76,0.15); color:#C9A84C; border:1px solid rgba(201,168,76,0.3); }
+.tag-red    { background:rgba(231,76,60,0.15); color:#E74C3C; border:1px solid rgba(231,76,60,0.3); }
+
+.info { background:rgba(201,168,76,0.07); border:1px solid rgba(201,168,76,0.18); border-radius:8px; padding:10px 14px; margin:8px 0; font-size:12px; color:#D4C080; line-height:1.8; display:flex; gap:8px; }
+.info-icon { font-size:16px; flex-shrink:0; }
+
+.note { background:rgba(26,155,138,0.07); border:1px solid rgba(26,155,138,0.18); border-radius:8px; padding:10px 14px; margin:8px 0; font-size:12px; color:#A8D8D0; line-height:1.8; display:flex; gap:8px; }
+
+.divider { border:none; border-top:1px solid rgba(255,255,255,0.05); margin:24px 0; }
+
+/* Watch sizes table */
+.sizes-table { width:100%; border-collapse:collapse; font-size:12px; margin:8px 0; }
+.sizes-table th { background:rgba(201,168,76,0.1); color:#C9A84C; padding:8px 12px; text-align:right; font-weight:600; }
+.sizes-table td { padding:7px 12px; color:#8EA99B; border-bottom:1px solid rgba(255,255,255,0.04); }
+.sizes-table tr:hover td { background:rgba(255,255,255,0.02); }
+.sizes-table .active td { color:#2DCFB8; }
+
+/* progress bar demo */
+.prog-demo { background:rgba(0,0,0,0.3); border-radius:4px; height:10px; overflow:hidden; margin:4px 0; }
+.prog-fill { height:100%; border-radius:4px; background:linear-gradient(90deg,#1A9B8A,#C9A84C); }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <h1>⌚ دليل إعداد محاكي Wear OS في Android Studio</h1>
+  <p>شغّل الساعة على جهازك قبل شرائها — اختبر وجه الساعة مباشرة<br>
+  يعمل على Windows و macOS بدون أي ساعة فعلية</p>
+</div>
+
+<!-- ─── Step 1 ─── -->
+<div class="step">
+  <div class="step-num">1</div>
+  <div class="step-body">
+    <h3>افتح Device Manager</h3>
+    <p>من شريط القوائم العلوي في Android Studio:</p>
+    <div class="mock">
+      <div class="mock-label">ANDROID STUDIO — MENU BAR</div>
+      <div style="height:8px;"></div>
+      <div class="row dim"><span>File</span> <span style="margin:0 6px;color:#3A5040">|</span> <span>Edit</span> <span style="margin:0 6px;color:#3A5040">|</span> <span>View</span> <span style="margin:0 6px;color:#3A5040">|</span> <span class="tag tag-teal">Tools ▼</span> <span style="margin:0 6px;color:#3A5040">|</span> <span>Help</span></div>
+      <div style="margin-top:8px; background:#0D1820; border-radius:6px; padding:6px;">
+        <div class="row hi">📱 Device Manager</div>
+        <div class="row dim" style="padding-right:16px;">AVD Manager</div>
+        <div class="row dim" style="padding-right:16px;">SDK Manager</div>
+        <div class="row dim" style="padding-right:16px;">Pair Devices Using Wi-Fi</div>
+      </div>
+    </div>
+    <div class="info"><span class="info-icon">💡</span> بديل أسرع: انقر على أيقونة الهاتف الصغيرة <strong>📱</strong> في الشريط الجانبي الأيمن</div>
+  </div>
+</div>
+
+<!-- ─── Step 2 ─── -->
+<div class="step">
+  <div class="step-num">2</div>
+  <div class="step-body">
+    <h3>أنشئ جهاز افتراضي جديد</h3>
+    <div class="mock">
+      <div class="title-bar"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div><span class="win-title">Device Manager</span></div>
+      <div class="row dim">Virtual &nbsp; Physical</div>
+      <div style="border-top:1px solid rgba(255,255,255,0.05); margin:4px 0;"></div>
+      <div class="row hi">➕ Create Virtual Device</div>
+    </div>
+    <p>ستفتح نافذة <strong>Virtual Device Configuration</strong></p>
+    <div class="mock">
+      <div class="title-bar"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div><span class="win-title">Select Hardware</span></div>
+      <!-- Category selector -->
+      <div style="display:flex; gap:8px; margin-bottom:8px;">
+        <div style="background:rgba(255,255,255,0.05); padding:5px 12px; border-radius:5px; font-size:11px; color:#8EA99B;">Phone</div>
+        <div style="background:rgba(255,255,255,0.05); padding:5px 12px; border-radius:5px; font-size:11px; color:#8EA99B;">Tablet</div>
+        <div style="background:rgba(26,155,138,0.2); padding:5px 12px; border-radius:5px; font-size:11px; color:#2DCFB8; border:1px solid #1A9B8A;">Wear OS ← اختر هذا</div>
+        <div style="background:rgba(255,255,255,0.05); padding:5px 12px; border-radius:5px; font-size:11px; color:#8EA99B;">TV</div>
+      </div>
+      <!-- Devices list -->
+      <table class="sizes-table">
+        <tr><th>الجهاز</th><th>الحجم</th><th>الدقة</th></tr>
+        <tr><td>Wear OS Small Round</td><td>38mm</td><td>384×384</td></tr>
+        <tr class="active"><td>⭐ Galaxy Watch 7 (40mm) ← موصى به</td><td>40mm</td><td>432×432</td></tr>
+        <tr><td>Wear OS Large Round</td><td>44mm</td><td>454×454</td></tr>
+        <tr><td>Galaxy Watch Ultra (47mm)</td><td>47mm</td><td>480×480</td></tr>
+      </table>
+    </div>
+    <p>اختر <span class="tag tag-teal">Galaxy Watch 7 (40mm)</span> ثم اضغط <span class="tag tag-green">Next</span></p>
+  </div>
+</div>
+
+<!-- ─── Step 3 ─── -->
+<div class="step">
+  <div class="step-num">3</div>
+  <div class="step-body">
+    <h3>اختر System Image (نظام التشغيل)</h3>
+    <div class="mock">
+      <div class="title-bar"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div><span class="win-title">System Image</span></div>
+      <div style="display:flex; gap:6px; margin-bottom:8px; font-size:11px;">
+        <div style="padding:4px 10px; border-radius:4px; background:rgba(26,155,138,0.15); color:#2DCFB8; border:1px solid #1A9B8A;">Recommended</div>
+        <div style="padding:4px 10px; border-radius:4px; color:#8EA99B;">x86 Images</div>
+        <div style="padding:4px 10px; border-radius:4px; color:#8EA99B;">Other Images</div>
+      </div>
+      <table class="sizes-table">
+        <tr><th>Release Name</th><th>API</th><th>Target</th></tr>
+        <tr><td>Wear OS 5.0 (Baklava) — <span class="tag tag-teal">API 36</span></td><td>36</td><td>Android 16</td></tr>
+        <tr class="active"><td>⭐ Wear OS 4.0 (UpsideDownCake) ← اختر هذا</td><td>34</td><td>Android 14</td></tr>
+        <tr><td>Wear OS 3.5 (Tiramisu)</td><td>33</td><td>Android 13</td></tr>
+      </table>
+      <div style="margin-top:8px;">
+        <div class="row dim">إذا ظهر <span class="tag tag-gold">Download</span> بجانب الاسم → اضغط عليه وانتظر</div>
+      </div>
+    </div>
+    <div class="info"><span class="info-icon">⚠️</span> قد يطلب تحميل الصورة (~1GB) في أول مرة — الإنترنت مطلوب مرة واحدة فقط</div>
+    <p>بعد التحميل اضغط <span class="tag tag-green">Next</span> ثم <span class="tag tag-green">Finish</span></p>
+  </div>
+</div>
+
+<!-- ─── Step 4 ─── -->
+<div class="step">
+  <div class="step-num">4</div>
+  <div class="step-body">
+    <h3>شغّل المحاكي</h3>
+    <div class="mock">
+      <div class="title-bar"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div><span class="win-title">Device Manager — Virtual Devices</span></div>
+      <div style="display:flex; align-items:center; gap:8px; background:rgba(26,155,138,0.08); padding:8px 12px; border-radius:6px; border:1px solid rgba(26,155,138,0.2);">
+        <span style="font-size:18px;">⌚</span>
+        <div>
+          <div style="font-size:13px; color:#EEF4F0;">Galaxy Watch 7 API 34</div>
+          <div style="font-size:10px; color:#8EA99B;">Wear OS 4 — 432×432</div>
+        </div>
+        <div style="margin-right:auto; display:flex; gap:6px;">
+          <div class="tag tag-green" style="cursor:pointer;">▶ Start</div>
+          <div class="tag tag-gold" style="cursor:pointer;">✏️ Edit</div>
+          <div class="tag tag-red" style="cursor:pointer;">🗑</div>
+        </div>
+      </div>
+    </div>
+    <p>اضغط <span class="tag tag-green">▶ Start</span> — سيستغرق التشغيل الأول دقيقة أو دقيقتين</p>
+    <div class="note"><span class="info-icon">✅</span> عند ظهور شاشة الساعة تعني أن المحاكي يعمل بنجاح</div>
+  </div>
+</div>
+
+<!-- ─── Step 5 ─── -->
+<div class="step">
+  <div class="step-num">5</div>
+  <div class="step-body">
+    <h3>شغّل مشروعك على المحاكي</h3>
+    <div class="mock">
+      <div class="title-bar"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div><span class="win-title">Android Studio — Run Configuration</span></div>
+      <div style="display:flex; align-items:center; gap:8px; padding:6px 0;">
+        <div style="background:rgba(255,255,255,0.06); padding:5px 12px; border-radius:5px; font-size:12px; color:#C9A84C;">app ▼</div>
+        <div style="background:rgba(26,155,138,0.15); padding:5px 12px; border-radius:5px; font-size:12px; color:#2DCFB8; border:1px solid #1A9B8A;">⌚ Galaxy Watch 7 API 34 ▼</div>
+        <div style="background:rgba(39,174,96,0.2); padding:5px 16px; border-radius:5px; font-size:14px; color:#2ECC71; border:1px solid #27AE60; cursor:pointer;">▶ Run</div>
+      </div>
+      <div style="margin-top:8px;">
+        <div class="prog-demo"><div class="prog-fill" style="width:80%;"></div></div>
+        <div style="font-size:10px; color:#2ECC71; margin-top:4px;">✓ Installing app on Wear OS emulator...</div>
+      </div>
+    </div>
+    <p>تأكد من اختيار <strong>المحاكي</strong> في قائمة الجهاز، ثم اضغط <span class="tag tag-green">▶ Run</span></p>
+    <div class="info"><span class="info-icon">💡</span> بعد التثبيت: في المحاكي اضغط مطولاً على وجه الساعة ← اختر <strong>أوقات الصلاة</strong></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ─── Watch sizes ─── -->
+<div class="step">
+  <div class="step-num" style="background:rgba(201,168,76,0.12);border-color:#C9A84C;color:#C9A84C;">★</div>
+  <div class="step-body">
+    <h3>مقاسات ساعات Samsung المدعومة</h3>
+    <p>المشروع يستخدم <span class="tag tag-teal">MATCH_PARENT</span> — يتكيف مع أي حجم تلقائياً</p>
+    <table class="sizes-table">
+      <tr><th>الموديل</th><th>القطر</th><th>الدقة</th><th>API</th></tr>
+      <tr><td>Galaxy Watch 4 / 5</td><td>40–44mm</td><td>396×396</td><td>30+</td></tr>
+      <tr><td>Galaxy Watch 6</td><td>40–44mm</td><td>432×432</td><td>33+</td></tr>
+      <tr class="active"><td>⭐ Galaxy Watch 7</td><td>40–44mm</td><td>432×432</td><td>34</td></tr>
+      <tr><td>Galaxy Watch Ultra</td><td>47mm</td><td>480×480</td><td>34</td></tr>
+      <tr><td>Galaxy Watch FE</td><td>40mm</td><td>396×396</td><td>30+</td></tr>
+    </table>
+    <div class="note"><span class="info-icon">✅</span>
+      لأن الـ WFF يستخدم <code style="background:rgba(0,0,0,0.3);padding:1px 6px;border-radius:3px;font-family:monospace;font-size:11px;">DEVICE_WIDTH</code> و <code style="background:rgba(0,0,0,0.3);padding:1px 6px;border-radius:3px;font-family:monospace;font-size:11px;">DEVICE_HEIGHT</code> — كل العناصر تحسب أبعادها نسبياً (%) وتتكيف مع أي قطر تلقائياً
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- Troubleshooting -->
+<div style="background:rgba(231,76,60,0.05);border:1px solid rgba(231,76,60,0.15);border-radius:12px;padding:16px 20px;">
+  <div style="font-size:14px;color:#E74C3C;margin-bottom:12px;font-weight:600;">🔧 مشاكل شائعة وحلولها</div>
+
+  <div style="margin-bottom:10px;">
+    <div style="font-size:12px;color:#EEF4F0;font-weight:600;">المحاكي بطيء جداً</div>
+    <div style="font-size:11px;color:#8EA99B;margin-top:3px;">فعّل HAXM أو Hyper-V من إعدادات Windows ← Programs and Features ← Windows Features ← Hyper-V</div>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    <div style="font-size:12px;color:#EEF4F0;font-weight:600;">"INSTALL_FAILED_API_LEVEL"</div>
+    <div style="font-size:11px;color:#8EA99B;margin-top:3px;">تأكد أن minSdk في build.gradle يساوي 30 أو أقل، وأن المحاكي API 30+</div>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    <div style="font-size:12px;color:#EEF4F0;font-weight:600;">وجه الساعة لا يظهر بعد التثبيت</div>
+    <div style="font-size:11px;color:#8EA99B;margin-top:3px;">في المحاكي: اضغط زر الساعة ← اسحب للأعلى ← ابحث عن "أوقات الصلاة" في القائمة</div>
+  </div>
+
+  <div>
+    <div style="font-size:12px;color:#EEF4F0;font-weight:600;">Gradle Sync Error</div>
+    <div style="font-size:11px;color:#8EA99B;margin-top:3px;">File ← Invalidate Caches ← Invalidate and Restart ← انتظر إعادة التشغيل</div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

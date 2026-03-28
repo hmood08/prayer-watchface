@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليل رفع وجه الساعة — Android Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --gold: #C9A84C;
+  --teal: #1A9B8A;
+  --teal-light: #2DCFB8;
+  --bg: #04080C;
+  --card: #0D1820;
+  --card2: #111E28;
+  --text: #EEF4F0;
+  --muted: #8EA99B;
+  --dim: #3A5040;
+  --green: #27AE60;
+  --red: #E74C3C;
+  --blue: #2980B9;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Cairo', sans-serif;
+  min-height: 100vh;
+  padding: 30px 20px 60px;
+}
+
+.page { max-width: 860px; margin: 0 auto; }
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(26,155,138,0.06));
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 20px;
+}
+.header h1 { font-size: 26px; color: var(--gold); margin-bottom: 8px; }
+.header p  { font-size: 14px; color: var(--muted); line-height: 1.8; }
+.badge {
+  display: inline-block; padding: 4px 14px; border-radius: 20px;
+  font-size: 11px; font-weight: 600; margin: 4px;
+  letter-spacing: 1px;
+}
+.badge-gold  { background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); color: var(--gold); }
+.badge-teal  { background: rgba(26,155,138,0.12); border: 1px solid rgba(26,155,138,0.3); color: var(--teal-light); }
+.badge-green { background: rgba(39,174,96,0.12); border: 1px solid rgba(39,174,96,0.3); color: #2ECC71; }
+
+/* Phase headers */
+.phase {
+  display: flex; align-items: center; gap: 14px;
+  margin: 36px 0 16px;
+}
+.phase-num {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(201,168,76,0.1); border: 2px solid var(--gold);
+  color: var(--gold); font-size: 18px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-family: 'Rajdhani', sans-serif;
+}
+.phase h2 { font-size: 20px; color: var(--gold); }
+.phase p   { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* Steps */
+.steps { display: flex; flex-direction: column; gap: 12px; }
+
+.step-card {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.step-card:hover { border-color: rgba(201,168,76,0.2); }
+
+.step-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 18px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(26,155,138,0.15); border: 1px solid var(--teal);
+  color: var(--teal-light); font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-family: 'Rajdhani', sans-serif;
+}
+
+.step-title { flex: 1; }
+.step-title strong { font-size: 14px; color: var(--text); }
+.step-title span { display: block; font-size: 11px; color: var(--muted); margin-top: 2px; font-weight: 300; }
+
+.step-arrow { color: var(--dim); font-size: 12px; transition: transform 0.3s; }
+.step-card.open .step-arrow { transform: rotate(180deg); }
+
+.step-body {
+  display: none;
+  padding: 0 18px 18px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.step-card.open .step-body { display: block; }
+
+/* Screen mockup */
+.screen-mock {
+  background: #0A0F14;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 16px;
+  margin: 12px 0;
+  font-family: 'Rajdhani', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.screen-mock::before {
+  content: attr(data-title);
+  position: absolute; top: 8px; right: 12px;
+  font-size: 10px; color: var(--dim);
+  letter-spacing: 2px;
+  font-family: 'Cairo', sans-serif;
+}
+
+.screen-title-bar {
+  height: 28px; background: #1A2530;
+  border-radius: 6px; margin-bottom: 10px;
+  display: flex; align-items: center; padding: 0 10px; gap: 6px;
+}
+.dot { width: 8px; height: 8px; border-radius: 50%; }
+.dot-red { background: #E74C3C; }
+.dot-yellow { background: #F39C12; }
+.dot-green { background: #27AE60; }
+
+.screen-content { padding: 6px 0; }
+
+.menu-item {
+  padding: 6px 10px; border-radius: 5px; font-size: 13px;
+  margin: 2px 0; cursor: default; display: flex; align-items: center; gap: 8px;
+}
+.menu-item.highlight { background: rgba(26,155,138,0.2); color: var(--teal-light); }
+.menu-item .icon { width: 16px; text-align: center; font-size: 14px; }
+
+.file-tree {
+  font-family: monospace; font-size: 12px; color: var(--muted);
+  line-height: 2; padding: 4px 0;
+}
+.file-tree .folder { color: var(--gold); }
+.file-tree .file   { color: #7EC8E3; }
+.file-tree .file.highlight { color: var(--teal-light); font-weight: bold; }
+.file-tree .indent { padding-right: 16px; border-right: 1px solid rgba(255,255,255,0.06); margin-right: 6px; }
+
+/* Code block */
+.code-block {
+  background: #060D14; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+  font-family: monospace; font-size: 12px; line-height: 1.8;
+  overflow-x: auto; position: relative;
+}
+.code-block .comment { color: #3D5A4D; }
+.code-block .tag     { color: #5D9CE0; }
+.code-block .attr    { color: #C9A84C; }
+.code-block .val     { color: #98C379; }
+.code-block .key     { color: #E06C75; }
+
+.copy-btn {
+  position: absolute; top: 8px; left: 8px;
+  background: rgba(26,155,138,0.15); border: 1px solid rgba(26,155,138,0.3);
+  color: var(--teal-light); padding: 3px 10px; border-radius: 6px;
+  font-size: 10px; cursor: pointer; font-family: 'Cairo', sans-serif;
+  transition: all 0.2s;
+}
+.copy-btn:hover { background: rgba(26,155,138,0.3); }
+
+/* Info boxes */
+.info-box {
+  border-radius: 10px; padding: 12px 16px; margin: 10px 0;
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 12px; line-height: 1.8;
+}
+.info-box .ib-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.info-box.tip   { background: rgba(26,155,138,0.08); border: 1px solid rgba(26,155,138,0.2); color: #A8D8D0; }
+.info-box.warn  { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); color: #D4C080; }
+.info-box.note  { background: rgba(41,128,185,0.08); border: 1px solid rgba(41,128,185,0.2); color: #90B8D8; }
+
+/* Progress tracker */
+.progress-track {
+  display: flex; gap: 0; margin: 24px 0;
+  align-items: center; flex-wrap: wrap;
+}
+.pt-step {
+  display: flex; align-items: center; flex-shrink: 0;
+}
+.pt-dot {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--card2); border: 2px solid var(--dim);
+  color: var(--dim); font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Rajdhani', sans-serif;
+}
+.pt-dot.done { background: rgba(39,174,96,0.15); border-color: var(--green); color: #2ECC71; }
+.pt-dot.active { background: rgba(26,155,138,0.15); border-color: var(--teal); color: var(--teal-light); animation: ptPulse 2s ease-in-out infinite; }
+@keyframes ptPulse { 0%,100%{box-shadow:0 0 0 0 rgba(26,155,138,0.4)} 50%{box-shadow:0 0 0 6px rgba(26,155,138,0)} }
+.pt-line { width: 28px; height: 2px; background: var(--dim); }
+.pt-line.done { background: var(--green); }
+.pt-label { font-size: 9px; color: var(--dim); text-align: center; width: 32px; margin-top: 4px; line-height: 1.3; }
+
+.pt-wrap { display: flex; flex-direction: column; align-items: center; }
+
+/* Download button */
+.dl-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(26,155,138,0.1));
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold); padding: 14px 28px; border-radius: 14px;
+  font-size: 15px; font-weight: 600; cursor: pointer;
+  font-family: 'Cairo', sans-serif; text-decoration: none;
+  margin: 20px auto; display: block; width: fit-content;
+  transition: all 0.2s;
+}
+.dl-btn:hover { background: linear-gradient(135deg, rgba(201,168,76,0.25), rgba(26,155,138,0.2)); transform: translateY(-1px); }
+
+hr.divider { border: none; border-top: 1px solid rgba(255,255,255,0.05); margin: 30px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <h1>📲 دليل رفع وجه الساعة على Samsung Galaxy Watch</h1>
+    <p>خطوة بخطوة من Android Studio حتى تظهر الساعة على معصمك<br>
+    لا يلزمك أي خبرة برمجية — فقط اتبع الخطوات</p>
+    <br>
+    <span class="badge badge-gold">Watch Face Format v2</span>
+    <span class="badge badge-teal">Galaxy Watch 6/7</span>
+    <span class="badge badge-teal">Wear OS 4/5</span>
+    <span class="badge badge-green">بدون كود</span>
+  </div>
+
+  <!-- Progress tracker -->
+  <div class="progress-track" style="justify-content:center;">
+    <div class="pt-wrap"><div class="pt-dot done">✓</div><div class="pt-label">تحميل<br>الملفات</div></div>
+    <div class="pt-line done"></div>
+    <div class="pt-wrap"><div class="pt-dot active">2</div><div class="pt-label">Android<br>Studio</div></div>
+    <div class="pt-line"></div>
+    <div class="pt-wrap"><div class="pt-dot">3</div><div class="pt-label">فتح<br>المشروع</div></div>
+    <div class="pt-line"></div>
+    <div class="pt-wrap"><div class="pt-dot">4</div><div class="pt-label">توصيل<br>الساعة</div></div>
+    <div class="pt-line"></div>
+    <div class="pt-wrap"><div class="pt-dot">5</div><div class="pt-label">تشغيل<br>Run</div></div>
+    <div class="pt-line"></div>
+    <div class="pt-wrap"><div class="pt-dot">6</div><div class="pt-label">المتجر<br>Store</div></div>
+  </div>
+
+  <!-- ══════ PHASE 1 ══════ -->
+  <div class="phase">
+    <div class="phase-num">١</div>
+    <div>
+      <h2>تثبيت Android Studio</h2>
+      <p>مرة واحدة فقط — لا تحتاج تكرارها</p>
+    </div>
+  </div>
+
+  <div class="steps">
+
+    <div class="step-card open">
+      <div class="step-header" onclick="toggle(this)">
+        <div class="step-num">1</div>
+        <div class="step-title">
+          <strong>حمّل Android Studio</strong>
+          <span>من الموقع الرسمي — مجاناً تماماً</span>
+        </div>
+        <div class="step-arrow">▼</div>
+      </div>
+      <div class="step-body">
+        <div class="info-box note">
+          <span class="ib-icon">🔗</span>
+          <div>اذهب لهذا الرابط وحمّل النسخة المناسبة لجهازك (Windows / Mac):<br>
+          <strong>developer.android.com/studio</strong></div>
+        </div>
+        <div class="screen-mock" data-title="ANDROID STUDIO INSTALLER">
+          <div class="screen-title-bar"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div><span style="font-size:11px;color:#8EA99B;margin-right:auto;">Android Studio Setup</span></div>
+          <div class="screen-content">
+            <div class="menu-item">📦 Downloading Android Studio Meerkat 2024.3.2...</div>
+            <div style="background:rgba(255,255,255,0.05);border-radius:4px;height:8px;margin:8px 0;overflow:hidden;">
+              <div style="width:78%;height:100%;background:linear-gradient(90deg,#1A9B8A,#C9A84C);border-radius:4px;"></div>
+            </div>
+            <div class="menu-item" style="font-size:11px;color:#8EA99B;">الحجم: ~1.2 GB — الوقت: 5-15 دقيقة حسب سرعة الإنترنت</div>
+          </div>
+        </div>
+        <div class="info-box tip">
+          <span class="ib-icon">💡</span>
+          <div>أثناء التثبيت: اقبل كل الخيارات الافتراضية، وعند سؤالك عن نوع التثبيت اختر <strong>Standard</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header" onclick="toggle(this)">
+        <div class="step-num">2</div>
+        <div class="step-title">
+          <strong>ثبّت Wear OS Emulator (محاكي)</strong>
+          <span>لتجربة الساعة بدون توصيلها فعلياً — اختياري</span>
+        </div>
+        <div class="step-arrow">▼</div>
+      </div>
+      <div class="step-body">
+        <p style="font-size:13px;color:var(--muted);line-height:2;margin-bottom:8px;">بعد فتح Android Studio لأول مرة:</p>
+        <div class="screen-mock" data-title="DEVICE MANAGER">
+          <div class="screen-title-bar"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+          <div class="screen-content">
+            <div class="menu-item highlight"><span class="icon">🔧</span> Tools → Device Manager</div>
+            <div class="menu-item"><span class="icon">➕</span> Create Virtual Device</div>
+            <div class="menu-item highlight"><span class="icon">⌚</span> Wear OS → Galaxy Watch 6 (40mm)</div>
+            <div class="menu-item"><span class="icon">▶</span> Next → Tiramisu API 33 → Finish</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end steps -->
+
+  <!-- ══════ PHASE 2 ══════ -->
+  <div class="phase">
+    <div class="phase-num">٢</div>
+    <div>
+      <h2>فتح مشروع الساعة</h2>
+      <p>الملفات التي حمّلتها جاهزة — فقط افتحها</p>
+    </div>
+  </div>
+
+  <div class="steps">
+
+    <div class="step-card">
+      <div class="step-header" onclick="toggle(this)">
+        <div class="step-num">3</div>
+        <div class="step-title">
+          <strong>افتح المشروع في Android Studio</strong>
+          <span>File → Open → اختر مجلد prayer_watchface</span>
+        </div>
+        <div class="step-arrow">▼</div>
+      </div>
+      <div class="step-body">
+        <div class="screen-mock" data-title="FILE STRUCTURE">
+          <div class="screen-title-bar"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div><span style="font-size:11px;color:#8EA99B;margin-right:auto;">Project View</span></div>
+          <div class="file-tree">
+            <div class="folder">📁 prayer_watchface/</div>
+            <div style="padding-right:20px;">
+              <div class="folder">📁 app/</div>
+              <div style="padding-right:20px;">
+                <div class="folder">📁 src/main/</div>
+                <div style="padding-right:20px;">
+                  <div class="file highlight">📄 AndroidManifest.xml</div>
+                  <div class="folder">📁 res/</div>
+                  <div style="padding-right:20px;">
+                    <div class="folder">📁 raw/</div>
+                    <div style="padding-right:20px;"><div class="file highlight">📄 watchface.xml ⭐</div></div>
+                    <div class="folder">📁 xml/</div>
+                    <div style="padding-right:20px;">
+                      <div class="file">📄 watch_face.xml</div>
+                      <div class="file">📄 watch_face_info.xml</div>
+                    </div>
+                    <div class="folder">📁 drawable/</div>
+                    <div style="padding-right:20px;"><div class="file">🖼️ preview.png</div></div>
+                    <div class="folder">📁 values/</div>
+                    <div style="padding-right:20px;"><div class="file">📄 strings.xml</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="file highlight">📄 build.gradle.kts</div>
+            </div>
+            <div class="file highlight">📄 settings.gradle.kts</div>
+          </div>
+        </div>
+        <div class="info-box warn">
+          <span class="ib-icon">⚠️</span>
+          <div>عند فتح المشروع قد تظهر رسالة <strong>"Gradle Sync"</strong> — اضغط <strong>Sync Now</strong> وانتظر دقيقة أو دقيقتين حتى ينتهي.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header" onclick="toggle(this)">
+        <div class="step-num">4</div>
+        <div class="step-title">
+          <strong>تحقق من ملف watchface.xml</strong>
+          <span>القلب الرئيسي للمشروع — يمكنك تعديله لاحقاً</span>
+        </div>
+        <div class="step-arrow">▼</div>
+      </div>
+      <div class="step-body">
+        <div class="info-box tip">
+          <span class="ib-icon">📍</span>
+          <div>الملف موجود في: <strong>app → res → raw → watchface.xml</strong><br>
+          انقر عليه مرتين لفتحه — ستجد كل العناصر موثّقة بالعربية</div>
+        </div>
+        <div class="code-block">
+          <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+          <span class="comment">&lt;!-- بنية الملف الرئيسي --&gt;</span><br>
+          <span class="tag">&lt;WatchFace</span> <span class="attr">width</span>=<span class="val">"450"</span> <span class="attr">height</span>=<span class="val">"450"</span><span class="tag">&gt;</span><br>
+          &nbsp;&nbsp;<span class="tag">&lt;Scene&gt;</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">&lt;!-- الخلفية --&gt;</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;PartDraw</span> <span class="attr">...</span><span class="tag">/&gt;</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">&lt;!-- البطارية --&gt;</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">&lt;!-- التاريخ الهجري --&gt;</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">&lt;!-- الوقت الرقمي --&gt;</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">&lt;!-- أوقات الصلاة (Complications) --&gt;</span><br>
+          &nbsp;&nbsp;<span class="tag">&lt;/Scene&gt;</span><br>
+          <span class="tag">&lt;/WatchFace&gt;</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════ PHASE 3 ══════ -->
+  <div class="phase">
+    <div class="phase-num">٣</div>
+    <div>
+      <h2>توصيل الساعة وتشغيل المشروع</h2>
+      <p>فعّل وضع المطور على الساعة أولاً</p>
+    </div>
+  </div>
+
+  <div class="steps">
+
+    <div class="step-card">
+      <div class="step-header" onclick="toggle(this)">
+        <div class="step-num">5</div>
+        <div class="step-title">
+          <strong>فعّل Developer Mode على الساعة</strong>
+          <span>اضغط على رقم البناء 7 مرات متتالية</span>
+        </div>
+        <div class="step-arrow">▼</div>
+      </div>
+      <div class="step-body">
+        <div class="screen-mock" data-title="GALAXY WATCH — SETTINGS">
+          <div class="screen-content">
+            <div class="menu-item highlight"><span class="icon">⚙️</span> الإعدادات</div>
+            <div class="menu-item"><span class="icon">  </span>↳ معلومات الساعة</div>
+            <div class="menu-item"><span class="icon">  </span>&nbsp;&nbsp;↳ معلومات البرنامج</div>
+            <div class="menu-item highlight"><span class="icon">  </span>&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong>رقم البناء — اضغط 7 مرات</strong> 👈</div>
+            <div style="padding:8px 10px;font-size:12px;color:#2ECC71;"> ✓ تم تفعيل وضع المطور!</div>
+          </div>
+        </div>
+        <div class="info-box tip">
+          <span class="ib-icon">💡</span>
+          <div>بعد التفعيل ستظهر قائمة جديدة <strong>"خيارات المطور"</strong> في الإعدادات — ادخل إليها وفعّل <strong>ADB Debugging</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header" onclick="toggle(this)">
+        <div class="step-num">6</div>
+        <div class="step-title">
+          <strong>وصّل الساعة بالكمبيوتر</strong>
+          <span>عبر WiFi (نفس الشبكة) أو USB</span>
+        </div>
+        <div class="step-arrow">▼</div>
+      </div>
+      <div class="step-body">
+        <p style="font-size:13px;color:var(--muted);line-height:2;"><strong style="color:var(--text);">طريقة WiFi (الأسهل):</strong></p>
+        <div class="screen-mock" data-title="WATCH SETTINGS — WIFI">
+          <div class="screen-content">
+            <div class="menu-item"><span class="icon">📶</span> الإعدادات → الاتصالات → WiFi</div>
+            <div class="menu-item highlight"><span class="icon">✓</span> تأكد أن الساعة والكمبيوتر على <strong>نفس الشبكة</strong></div>
+            <div class="menu-item"><span class="icon">🔢</span> خيارات المطور → ADB over WiFi → <strong>انسخ IP:PORT</strong></div>
+            <div style="background:rgba(26,155,138,0.1);padding:6px 10px;border-radius:5px;font-family:monospace;font-size:13px;color:var(--teal-light);margin-top:6px;">192.168.1.XXX:5555</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:2;margin-top:10px;"><strong style="color:var(--text);">في Android Studio:</strong></p>
+        <div class="screen-mock" data-title="ANDROID STUDIO — PAIR">
+          <div class="screen-content">
+            <div class="menu-item highlight"><span class="icon">🔧</span> Tools → Device Manager → Pair using Wi-Fi</div>
+            <div class="menu-item"><span class="icon">📝</span> أدخل IP:PORT من الساعة</div>
+            <div class="menu-item highlight"><span class="icon">✓</span> Connect — ستظهر الساعة في القائمة</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header" onclick="toggle(this)">
+        <div class="step-num">7</div>
+        <div class="step-title">
+          <strong>اضغط ▶ Run</strong>
+          <span>وجه الساعة سيظهر على الساعة فوراً!</span>
+        </div>
+        <div class="step-arrow">▼</div>
+      </div>
+      <div class="step-body">
+        <div class="screen-mock" data-title="ANDROID STUDIO — RUN">
+          <div class="screen-title-bar"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+          <div class="screen-content">
+            <div class="menu-item"><span class="icon">📱</span> الجهاز المتصل: <strong style="color:var(--teal-light);">Galaxy Watch 6 (ADB)</strong></div>
+            <div class="menu-item highlight" style="font-size:15px;padding:10px;"><span class="icon">▶</span> <strong>Run 'app'</strong> &nbsp;(أو Shift+F10)</div>
+            <div style="height:6px;background:rgba(255,255,255,0.05);border-radius:3px;margin:8px 0;overflow:hidden;">
+              <div style="width:90%;height:100%;background:linear-gradient(90deg,var(--teal),var(--gold));animation:prog 2s ease-in-out infinite alternate;border-radius:3px;"></div>
+            </div>
+            <div style="font-size:11px;color:#2ECC71;">✓ Installing on device... Watch face set as active!</div>
+          </div>
+        </div>
+        <div class="info-box tip">
+          <span class="ib-icon">🎉</span>
+          <div>بعد نجاح التشغيل، <strong>ارفع معصمك</strong> — ستجد وجه الساعة الجديد يعمل مباشرة!</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════ PHASE 4 ══════ -->
+  <div class="phase">
+    <div class="phase-num">٤</div>
+    <div>
+      <h2>ربط أوقات الصلاة (Complications)</h2>
+      <p>اختر تطبيق أوقات الصلاة من هاتفك كمصدر للبيانات</p>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step-card">
+      <div class="step-header" onclick="toggle(this)">
+        <div class="step-num">8</div>
+        <div class="step-title">
+          <strong>اختر تطبيق أوقات الصلاة</strong>
+          <span>Muslim Pro أو Athan Pro يدعمان Wear OS Complications</span>
+        </div>
+        <div class="step-arrow">▼</div>
+      </div>
+      <div class="step-body">
+        <div class="screen-mock" data-title="WATCH FACE EDITOR">
+          <div class="screen-content">
+            <div class="menu-item"><span class="icon">⌚</span> اضغط مطولاً على وجه الساعة في الساعة</div>
+            <div class="menu-item highlight"><span class="icon">✏️</span> Customize / تخصيص</div>
+            <div class="menu-item"><span class="icon">🕌</span> Complication 1 ← اختر Muslim Pro → "الصلاة الحالية"</div>
+            <div class="menu-item"><span class="icon">🕌</span> Complication 2 ← اختر Muslim Pro → "الصلاة التالية"</div>
+          </div>
+        </div>
+        <div class="info-box warn">
+          <span class="ib-icon">⚠️</span>
+          <div>إذا لم يكن تطبيق أوقات الصلاة مثبتاً على هاتفك، ستظهر بيانات البطارية كبديل تلقائي حتى تثبّته.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ PHASE 5 ══════ -->
+  <div class="phase">
+    <div class="phase-num">٥</div>
+    <div>
+      <h2>النشر في المتجر (اختياري)</h2>
+      <p>شارك وجه ساعتك مع الجميع</p>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step-card">
+      <div class="step-header" onclick="toggle(this)">
+        <div class="step-num">9</div>
+        <div class="step-title">
+          <strong>بناء ملف AAB للنشر</strong>
+          <span>Build → Generate Signed Bundle</span>
+        </div>
+        <div class="step-arrow">▼</div>
+      </div>
+      <div class="step-body">
+        <div class="screen-mock" data-title="BUILD SIGNED BUNDLE">
+          <div class="screen-content">
+            <div class="menu-item highlight"><span class="icon">🔨</span> Build → Generate Signed Bundle / APK</div>
+            <div class="menu-item"><span class="icon">📦</span> اختر: Android App Bundle (.aab)</div>
+            <div class="menu-item"><span class="icon">🔑</span> Create new keystore → احفظ كلمة المرور في مكان آمن!</div>
+            <div class="menu-item highlight"><span class="icon">✓</span> Build → ينتج ملف app-release.aab</div>
+          </div>
+        </div>
+        <div class="info-box warn">
+          <span class="ib-icon">🔐</span>
+          <div>الـ Keystore مهم جداً — احتفظ به في مكان آمن. بدونه لن تقدر تحدّث التطبيق مستقبلاً!</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-header" onclick="toggle(this)">
+        <div class="step-num">10</div>
+        <div class="step-title">
+          <strong>ارفع على Google Play أو Galaxy Store</strong>
+          <span>Google Play: $25 مرة واحدة | Galaxy Store: مجاني</span>
+        </div>
+        <div class="step-arrow">▼</div>
+      </div>
+      <div class="step-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="screen-mock" data-title="GOOGLE PLAY">
+            <div class="screen-content">
+              <div class="menu-item" style="font-size:12px;font-weight:700;color:var(--teal-light);">Google Play Console</div>
+              <div class="menu-item" style="font-size:11px;"><span class="icon">🌐</span> play.google.com/console</div>
+              <div class="menu-item" style="font-size:11px;"><span class="icon">💳</span> رسوم $25 مرة واحدة</div>
+              <div class="menu-item" style="font-size:11px;"><span class="icon">📦</span> ارفع .aab</div>
+              <div class="menu-item" style="font-size:11px;"><span class="icon">⏱</span> مراجعة 1-3 أيام</div>
+            </div>
+          </div>
+          <div class="screen-mock" data-title="GALAXY STORE">
+            <div class="screen-content">
+              <div class="menu-item" style="font-size:12px;font-weight:700;color:var(--gold);">Galaxy Store Seller</div>
+              <div class="menu-item" style="font-size:11px;"><span class="icon">🌐</span> seller.samsungapps.com</div>
+              <div class="menu-item" style="font-size:11px;"><span class="icon">✓</span> مجاني تماماً</div>
+              <div class="menu-item" style="font-size:11px;"><span class="icon">📦</span> ارفع .apk أو .aab</div>
+              <div class="menu-item" style="font-size:11px;"><span class="icon">⏱</span> مراجعة 1-5 أيام</div>
+            </div>
+          </div>
+        </div>
+        <div class="info-box tip">
+          <span class="ib-icon">📝</span>
+          <div>في وصف التطبيق أضف كلمات بحث مثل: <strong>أوقات الصلاة، Islamic watch face، prayer times، Galaxy Watch</strong> لتحسين ظهورك</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Summary box -->
+  <div style="background:rgba(26,155,138,0.06);border:1px solid rgba(26,155,138,0.15);border-radius:16px;padding:20px 24px;text-align:center;">
+    <div style="font-size:28px;margin-bottom:8px;">🎉</div>
+    <div style="font-size:16px;color:var(--text);font-weight:600;margin-bottom:6px;">خلاصة سريعة</div>
+    <div style="font-size:13px;color:var(--muted);line-height:2.2;">
+      حمّل Android Studio ← افتح مجلد prayer_watchface ← Sync Gradle<br>
+      فعّل Developer Mode على الساعة ← وصّلها بـ WiFi<br>
+      اضغط ▶ Run ← وجه الساعة يظهر على معصمك ✓<br>
+      اختر Muslim Pro كـ Complication لأوقات الصلاة
+    </div>
+  </div>
+
+</div><!-- end page -->
+
+<script>
+function toggle(header) {
+  const card = header.parentElement;
+  card.classList.toggle('open');
+}
+
+function copyCode(btn) {
+  const block = btn.parentElement;
+  const text = block.innerText.replace('نسخ\n','');
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.textContent = '✓ تم النسخ';
+    setTimeout(()=>btn.textContent='نسخ',2000);
+  });
+}
+</script>
+</body>
+</html>

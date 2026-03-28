@@ -1,0 +1,4 @@
+#Wed Mar 25 21:01:36 AST 2026
+base.0=D\:\\apps\\clock\\prayer_watchface\\app\\build\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

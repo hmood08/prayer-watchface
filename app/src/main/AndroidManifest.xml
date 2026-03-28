@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.prayertime.watchface">
+
+    <uses-feature android:name="android.hardware.type.watch" />
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@drawable/preview"
+        android:hasCode="false">
+
+        <property android:name="com.google.wear.watchface.format.version" android:value="2" />
+
+        <service
+            android:name="com.google.wear.watchface.format.WatchFaceFormatService"
+            android:permission="android.permission.BIND_WALLPAPER"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+                <category android:name="com.google.android.clockwork.watchfaces.category.WATCH_FACE" />
+            </intent-filter>
+
+            <meta-data android:name="com.google.wear.watchface.format" android:resource="@raw/watchface" />
+            <meta-data android:name="com.google.android.clockwork.watchface.preview" android:resource="@drawable/preview" />
+        </service>
+    </application>
+</manifest>

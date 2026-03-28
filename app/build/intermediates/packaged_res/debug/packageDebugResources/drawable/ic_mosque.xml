@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- أيقونة مسجد بسيطة للإشعارات -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- قبة المسجد -->
+    <path
+        android:fillColor="#FFC9A84C"
+        android:pathData="M12,2 C9.5,2 8,4 8,6 L8,8 L16,8 L16,6 C16,4 14.5,2 12,2 Z"/>
+    <!-- جسم المسجد -->
+    <path
+        android:fillColor="#FFC9A84C"
+        android:pathData="M4,8 L4,20 L20,20 L20,8 Z"/>
+    <!-- الباب -->
+    <path
+        android:fillColor="#FF070D12"
+        android:pathData="M10,14 L10,20 L14,20 L14,14 C14,12.9 13.1,12 12,12 C10.9,12 10,12.9 10,14 Z"/>
+    <!-- المئذنة اليمنى -->
+    <path
+        android:fillColor="#FFC9A84C"
+        android:pathData="M18,4 L18,8 L20,8 L20,4 Z"/>
+    <!-- المئذنة اليسرى -->
+    <path
+        android:fillColor="#FFC9A84C"
+        android:pathData="M4,4 L4,8 L6,8 L6,4 Z"/>
+    <!-- نجمة صغيرة فوق المئذنتين -->
+    <path android:fillColor="#FFC9A84C" android:pathData="M19,3 L19.3,3.8 L20,3.8 L19.5,4.2 L19.7,5 L19,4.5 L18.3,5 L18.5,4.2 L18,3.8 L18.7,3.8 Z"/>
+    <path android:fillColor="#FFC9A84C" android:pathData="M5,3 L5.3,3.8 L6,3.8 L5.5,4.2 L5.7,5 L5,4.5 L4.3,5 L4.5,4.2 L4,3.8 L4.7,3.8 Z"/>
+</vector>

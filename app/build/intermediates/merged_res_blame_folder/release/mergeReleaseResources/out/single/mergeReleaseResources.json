@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "com.prayertime.watchface.app-release-34:/xml_watch_face.xml.flat",
+        "source": "com.prayertime.watchface.app-main-35:/xml/watch_face.xml"
+    },
+    {
+        "merged": "com.prayertime.watchface.app-release-34:/xml_watch_face_info.xml.flat",
+        "source": "com.prayertime.watchface.app-main-35:/xml/watch_face_info.xml"
+    },
+    {
+        "merged": "com.prayertime.watchface.app-release-34:/raw_watchface.xml.flat",
+        "source": "com.prayertime.watchface.app-main-35:/raw/watchface.xml"
+    },
+    {
+        "merged": "com.prayertime.watchface.app-release-34:/drawable_preview.png.flat",
+        "source": "com.prayertime.watchface.app-main-35:/drawable/preview.png"
+    },
+    {
+        "merged": "com.prayertime.watchface.app-release-34:/drawable_ic_mosque.xml.flat",
+        "source": "com.prayertime.watchface.app-main-35:/drawable/ic_mosque.xml"
+    }
+]

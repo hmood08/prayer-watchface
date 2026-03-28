@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WatchFaceInfo>
+    <!-- صورة المعاينة -->
+    <Preview value="@drawable/preview" />
+
+    <!-- تصنيف الساعة -->
+    <Category value="CATEGORY_EMPTY" />
+
+    <!-- إتاحتها في وضع العرض -->
+    <AvailableInRetail value="true" />
+
+    <!-- السماح بأكثر من نسخة -->
+    <MultipleInstancesAllowed value="true" />
+
+    <!-- قابل للتعديل (Complications) -->
+    <Editable value="true" />
+</WatchFaceInfo>

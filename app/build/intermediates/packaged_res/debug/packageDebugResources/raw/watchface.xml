@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ══════════════════════════════════════════════════════
+    وجه ساعة أوقات الصلاة — Watch Face Format v2
+    يتكيّف مع أي حجم ساعة (MATCH_PARENT)
+    ══════════════════════════════════════════════════════
+-->
+<WatchFace width="MATCH_PARENT" height="MATCH_PARENT"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <Scene>
+
+        <!-- ══ الخلفية ══ -->
+        <PartDraw x="0" y="0" width="MATCH_PARENT" height="MATCH_PARENT">
+            <Arc centerX="[DEVICE_WIDTH / 2]" centerY="[DEVICE_HEIGHT / 2]"
+                 width="MATCH_PARENT" height="MATCH_PARENT"
+                 startAngle="0" endAngle="360">
+                <Stroke color="#FF070D12" thickness="[DEVICE_WIDTH]"/>
+            </Arc>
+        </PartDraw>
+
+        <!-- حلقة ذهبية خارجية -->
+        <PartDraw x="[DEVICE_WIDTH * 0.01]" y="[DEVICE_HEIGHT * 0.01]"
+                  width="[DEVICE_WIDTH * 0.98]" height="[DEVICE_HEIGHT * 0.98]">
+            <Arc centerX="[DEVICE_WIDTH * 0.49]" centerY="[DEVICE_HEIGHT * 0.49]"
+                 width="[DEVICE_WIDTH * 0.98]" height="[DEVICE_HEIGHT * 0.98]"
+                 startAngle="0" endAngle="360">
+                <Stroke color="#40C9A84C" thickness="3"/>
+            </Arc>
+        </PartDraw>
+
+        <!-- شبكة خفيفة — تحاكي نسيج الساعة -->
+        <PartDraw x="[DEVICE_WIDTH * 0.1]" y="[DEVICE_HEIGHT * 0.1]"
+                  width="[DEVICE_WIDTH * 0.8]" height="[DEVICE_HEIGHT * 0.8]">
+            <Arc centerX="[DEVICE_WIDTH * 0.4]" centerY="[DEVICE_HEIGHT * 0.4]"
+                 width="[DEVICE_WIDTH * 0.8]" height="[DEVICE_HEIGHT * 0.8]"
+                 startAngle="0" endAngle="360">
+                <Stroke color="#08C9A84C" thickness="1"/>
+            </Arc>
+        </PartDraw>
+
+        <!-- ══ علامات الساعات الـ 12 ══ -->
+        <Group x="0" y="0" width="MATCH_PARENT" height="MATCH_PARENT">
+            <PartDraw x="[DEVICE_WIDTH/2 - 2]" y="[DEVICE_HEIGHT * 0.03]"
+                      width="4" height="[DEVICE_HEIGHT * 0.06]"
+                      pivotX="2" pivotY="[DEVICE_HEIGHT * 0.47]" angle="0">
+                <Rectangle x="0" y="0" width="3" height="[DEVICE_HEIGHT * 0.04]" cornerRadiusX="2" cornerRadiusY="2">
+                    <Fill color="#FFC9A84C"/>
+                </Rectangle>
+            </PartDraw>
+            <PartDraw x="[DEVICE_WIDTH/2 - 2]" y="[DEVICE_HEIGHT * 0.03]"
+                      width="4" height="[DEVICE_HEIGHT * 0.06]"
+                      pivotX="2" pivotY="[DEVICE_HEIGHT * 0.47]" angle="30">
+                <Rectangle x="0" y="0" width="3" height="[DEVICE_HEIGHT * 0.04]" cornerRadiusX="2" cornerRadiusY="2">
+                    <Fill color="#FFC9A84C"/>
+                </Rectangle>
+            </PartDraw>
+            <PartDraw x="[DEVICE_WIDTH/2 - 2]" y="[DEVICE_HEIGHT * 0.03]"
+                      width="4" height="[DEVICE_HEIGHT * 0.06]"
+                      pivotX="2" pivotY="[DEVICE_HEIGHT * 0.47]" angle="60">
+                <Rectangle x="0" y="0" width="3" height="[DEVICE_HEIGHT * 0.04]" cornerRadiusX="2" cornerRadiusY="2">
+                    <Fill color="#FFC9A84C"/>
+                </Rectangle>
+            </PartDraw>
+            <PartDraw x="[DEVICE_WIDTH/2 - 2]" y="[DEVICE_HEIGHT * 0.03]"
+                      width="4" height="[DEVICE_HEIGHT * 0.06]"
+                      pivotX="2" pivotY="[DEVICE_HEIGHT * 0.47]" angle="90">
+                <Rectangle x="0" y="0" width="3" height="[DEVICE_HEIGHT * 0.04]" cornerRadiusX="2" cornerRadiusY="2">
+                    <Fill color="#FFC9A84C"/>
+                </Rectangle>
+            </PartDraw>
+            <PartDraw x="[DEVICE_WIDTH/2 - 2]" y="[DEVICE_HEIGHT * 0.03]"
+                      width="4" height="[DEVICE_HEIGHT * 0.06]"
+                      pivotX="2" pivotY="[DEVICE_HEIGHT * 0.47]" angle="120">
+                <Rectangle x="0" y="0" width="3" height="[DEVICE_HEIGHT * 0.04]" cornerRadiusX="2" cornerRadiusY="2">
+                    <Fill color="#FFC9A84C"/>
+                </Rectangle>
+            </PartDraw>
+            <PartDraw x="[DEVICE_WIDTH/2 - 2]" y="[DEVICE_HEIGHT * 0.03]"
+                      width="4" height="[DEVICE_HEIGHT * 0.06]"
+                      pivotX="2" pivotY="[DEVICE_HEIGHT * 0.47]" angle="150">
+                <Rectangle x="0" y="0" width="3" height="[DEVICE_HEIGHT * 0.04]" cornerRadiusX="2" cornerRadiusY="2">
+                    <Fill color="#FFC9A84C"/>
+                </Rectangle>
+            </PartDraw>
+            <PartDraw x="[DEVICE_WIDTH/2 - 2]" y="[DEVICE_HEIGHT * 0.03]"
+                      width="4" height="[DEVICE_HEIGHT * 0.06]"
+                      pivotX="2" pivotY="[DEVICE_HEIGHT * 0.47]" angle="180">
+                <Rectangle x="0" y="0" width="3" height="[DEVICE_HEIGHT * 0.04]" cornerRadiusX="2" cornerRadiusY="2">
+                    <Fill color="#FFC9A84C"/>
+                </Rectangle>
+            </PartDraw>
+            <PartDraw x="[DEVICE_WIDTH/2 - 2]" y="[DEVICE_HEIGHT * 0.03]"
+                      width="4" height="[DEVICE_HEIGHT * 0.06]"
+                      pivotX="2" pivotY="[DEVICE_HEIGHT * 0.47]" angle="210">
+                <Rectangle x="0" y="0" width="3" height="[DEVICE_HEIGHT * 0.04]" cornerRadiusX="2" cornerRadiusY="2">
+                    <Fill color="#FFC9A84C"/>
+                </Rectangle>
+            </PartDraw>
+            <PartDraw x="[DEVICE_WIDTH/2 - 2]" y="[DEVICE_HEIGHT * 0.03]"
+                      width="4" height="[DEVICE_HEIGHT * 0.06]"
+                      pivotX="2" pivotY="[DEVICE_HEIGHT * 0.47]" angle="240">
+                <Rectangle x="0" y="0" width="3" height="[DEVICE_HEIGHT * 0.04]" cornerRadiusX="2" cornerRadiusY="2">
+                    <Fill color="#FFC9A84C"/>
+                </Rectangle>
+            </PartDraw>
+            <PartDraw x="[DEVICE_WIDTH/2 - 2]" y="[DEVICE_HEIGHT * 0.03]"
+                      width="4" height="[DEVICE_HEIGHT * 0.06]"
+                      pivotX="2" pivotY="[DEVICE_HEIGHT * 0.47]" angle="270">
+                <Rectangle x="0" y="0" width="3" height="[DEVICE_HEIGHT * 0.04]" cornerRadiusX="2" cornerRadiusY="2">
+                    <Fill color="#FFC9A84C"/>
+                </Rectangle>
+            </PartDraw>
+            <PartDraw x="[DEVICE_WIDTH/2 - 2]" y="[DEVICE_HEIGHT * 0.03]"
+                      width="4" height="[DEVICE_HEIGHT * 0.06]"
+                      pivotX="2" pivotY="[DEVICE_HEIGHT * 0.47]" angle="300">
+                <Rectangle x="0" y="0" width="3" height="[DEVICE_HEIGHT * 0.04]" cornerRadiusX="2" cornerRadiusY="2">
+                    <Fill color="#FFC9A84C"/>
+                </Rectangle>
+            </PartDraw>
+            <PartDraw x="[DEVICE_WIDTH/2 - 2]" y="[DEVICE_HEIGHT * 0.03]"
+                      width="4" height="[DEVICE_HEIGHT * 0.06]"
+                      pivotX="2" pivotY="[DEVICE_HEIGHT * 0.47]" angle="330">
+                <Rectangle x="0" y="0" width="3" height="[DEVICE_HEIGHT * 0.04]" cornerRadiusX="2" cornerRadiusY="2">
+                    <Fill color="#FFC9A84C"/>
+                </Rectangle>
+            </PartDraw>
+        </Group>
+
+        <!-- ══ قوس البطارية ══ -->
+        <!-- خلفية القوس -->
+        <PartDraw x="[DEVICE_WIDTH * 0.35]" y="[DEVICE_HEIGHT * 0.10]"
+                  width="[DEVICE_WIDTH * 0.30]" height="[DEVICE_HEIGHT * 0.08]">
+            <Arc centerX="[DEVICE_WIDTH * 0.15]" centerY="[DEVICE_HEIGHT * 0.04]"
+                 width="[DEVICE_WIDTH * 0.30]" height="[DEVICE_HEIGHT * 0.08]"
+                 startAngle="180" endAngle="360">
+                <Stroke color="#15FFFFFF" thickness="4"/>
+            </Arc>
+        </PartDraw>
+        <!-- قوس متغير حسب مستوى البطارية -->
+        <PartDraw x="[DEVICE_WIDTH * 0.35]" y="[DEVICE_HEIGHT * 0.10]"
+                  width="[DEVICE_WIDTH * 0.30]" height="[DEVICE_HEIGHT * 0.08]">
+            <Arc centerX="[DEVICE_WIDTH * 0.15]" centerY="[DEVICE_HEIGHT * 0.04]"
+                 width="[DEVICE_WIDTH * 0.30]" height="[DEVICE_HEIGHT * 0.08]"
+                 startAngle="180"
+                 endAngle="[180 + BATTERY_PERCENT * 1.8]">
+                <Stroke color="#FF2ECC71" thickness="4"/>
+            </Arc>
+        </PartDraw>
+        <!-- نسبة البطارية -->
+        <PartText x="[DEVICE_WIDTH * 0.40]" y="[DEVICE_HEIGHT * 0.115]"
+                  width="[DEVICE_WIDTH * 0.20]" height="[DEVICE_HEIGHT * 0.05]">
+            <Text align="CENTER" ellipsis="true">
+                <Font family="SYNC_TO_DEVICE" size="[DEVICE_HEIGHT * 0.028]"
+                      color="#FFC9A84C" weight="BOLD">
+                    <Template>%s%%
+                        <Parameter expression="BATTERY_PERCENT"/>
+                    </Template>
+                </Font>
+            </Text>
+        </PartText>
+
+        <!-- ══ التاريخ الهجري — أم القرى ══ -->
+        <PartText x="[DEVICE_WIDTH * 0.10]" y="[DEVICE_HEIGHT * 0.195]"
+                  width="[DEVICE_WIDTH * 0.80]" height="[DEVICE_HEIGHT * 0.07]">
+            <Text align="CENTER" ellipsis="true">
+                <Font family="SYNC_TO_DEVICE" size="[DEVICE_HEIGHT * 0.038]"
+                      color="#FFC9A84C" weight="NORMAL">
+                    <Template>%s %s %s
+                        <Parameter expression="ISLAMIC_CALENDAR_DAY"/>
+                        <Parameter expression="ISLAMIC_CALENDAR_MONTH_NAME"/>
+                        <Parameter expression="ISLAMIC_CALENDAR_YEAR"/>
+                    </Template>
+                </Font>
+            </Text>
+        </PartText>
+
+        <!-- اسم اليوم -->
+        <PartText x="[DEVICE_WIDTH * 0.10]" y="[DEVICE_HEIGHT * 0.255]"
+                  width="[DEVICE_WIDTH * 0.80]" height="[DEVICE_HEIGHT * 0.05]">
+            <Text align="CENTER" ellipsis="true">
+                <Font family="SYNC_TO_DEVICE" size="[DEVICE_HEIGHT * 0.030]"
+                      color="#707A6030" weight="NORMAL">
+                    <Template>%s
+                        <Parameter expression="DAY_OF_WEEK"/>
+                    </Template>
+                </Font>
+            </Text>
+        </PartText>
+
+        <!-- ══ الوقت الرقمي — يملأ المنتصف ══ -->
+        <PartText x="[DEVICE_WIDTH * 0.05]" y="[DEVICE_HEIGHT * 0.32]"
+                  width="[DEVICE_WIDTH * 0.90]" height="[DEVICE_HEIGHT * 0.20]">
+            <Text align="CENTER" ellipsis="true">
+                <Font family="SYNC_TO_DEVICE" size="[DEVICE_HEIGHT * 0.17]"
+                      color="#FFEEF4F0" weight="BOLD">
+                    <Template>%s:%s
+                        <Parameter expression="HOURS_0_23_Z"/>
+                        <Parameter expression="MINUTES_Z"/>
+                    </Template>
+                </Font>
+            </Text>
+        </PartText>
+
+        <!-- الثواني -->
+        <PartText x="[DEVICE_WIDTH * 0.68]" y="[DEVICE_HEIGHT * 0.325]"
+                  width="[DEVICE_WIDTH * 0.22]" height="[DEVICE_HEIGHT * 0.07]">
+            <Text align="LEFT" ellipsis="true">
+                <Font family="SYNC_TO_DEVICE" size="[DEVICE_HEIGHT * 0.048]"
+                      color="#FF1A9B8A" weight="NORMAL">
+                    <Template>%s
+                        <Parameter expression="SECONDS_Z"/>
+                    </Template>
+                </Font>
+            </Text>
+        </PartText>
+
+        <!-- صباحاً / مساءً -->
+        <PartText x="[DEVICE_WIDTH * 0.20]" y="[DEVICE_HEIGHT * 0.516]"
+                  width="[DEVICE_WIDTH * 0.60]" height="[DEVICE_HEIGHT * 0.055]">
+            <Text align="CENTER" ellipsis="true">
+                <Font family="SYNC_TO_DEVICE" size="[DEVICE_HEIGHT * 0.032]"
+                      color="#808EA99B" weight="NORMAL">
+                    <Template>%s
+                        <Parameter expression="[HOURS_0_23 lt 12 ? 'صباحاً' : 'مساءً']"/>
+                    </Template>
+                </Font>
+            </Text>
+        </PartText>
+
+        <!-- ══ خط فاصل ══ -->
+        <PartDraw x="[DEVICE_WIDTH * 0.25]" y="[DEVICE_HEIGHT * 0.575]"
+                  width="[DEVICE_WIDTH * 0.50]" height="2">
+            <Rectangle x="0" y="0" width="[DEVICE_WIDTH * 0.50]" height="1">
+                <Fill color="#35C9A84C"/>
+            </Rectangle>
+        </PartDraw>
+
+        <!-- ══ Complication 1: الصلاة الحالية ══ -->
+        <ComplicationSlot
+            slotId="1"
+            x="[DEVICE_WIDTH * 0.10]" y="[DEVICE_HEIGHT * 0.585]"
+            width="[DEVICE_WIDTH * 0.80]" height="[DEVICE_HEIGHT * 0.12]"
+            supportedTypes="LONG_TEXT SHORT_TEXT">
+
+            <BoundingOval x="0" y="0"
+                          width="[DEVICE_WIDTH * 0.80]"
+                          height="[DEVICE_HEIGHT * 0.12]"
+                          outlinePadding="3"/>
+
+            <Complication type="LONG_TEXT">
+                <PartText x="0" y="0"
+                          width="[DEVICE_WIDTH * 0.80]"
+                          height="[DEVICE_HEIGHT * 0.065]">
+                    <Text align="CENTER" ellipsis="true">
+                        <Font family="SYNC_TO_DEVICE"
+                              size="[DEVICE_HEIGHT * 0.052]"
+                              color="#FF2DCFB8" weight="NORMAL">
+                            <Template>%s<Parameter expression="COMPLICATION.TITLE"/></Template>
+                        </Font>
+                    </Text>
+                </PartText>
+                <PartText x="0" y="[DEVICE_HEIGHT * 0.062]"
+                          width="[DEVICE_WIDTH * 0.80]"
+                          height="[DEVICE_HEIGHT * 0.05]">
+                    <Text align="CENTER" ellipsis="true">
+                        <Font family="SYNC_TO_DEVICE"
+                              size="[DEVICE_HEIGHT * 0.034]"
+                              color="#FF1A9B8A" weight="NORMAL">
+                            <Template>%s<Parameter expression="COMPLICATION.TEXT"/></Template>
+                        </Font>
+                    </Text>
+                </PartText>
+            </Complication>
+
+            <Complication type="SHORT_TEXT">
+                <PartText x="0" y="[DEVICE_HEIGHT * 0.02]"
+                          width="[DEVICE_WIDTH * 0.80]"
+                          height="[DEVICE_HEIGHT * 0.08]">
+                    <Text align="CENTER" ellipsis="true">
+                        <Font family="SYNC_TO_DEVICE"
+                              size="[DEVICE_HEIGHT * 0.055]"
+                              color="#FF2DCFB8" weight="BOLD">
+                            <Template>%s<Parameter expression="COMPLICATION.TEXT"/></Template>
+                        </Font>
+                    </Text>
+                </PartText>
+            </Complication>
+
+            <DefaultProviderPolicy
+                defaultSystemProvider="WATCH_BATTERY"
+                defaultSystemProviderType="RANGED_VALUE"/>
+        </ComplicationSlot>
+
+        <!-- خط فاصل ثانوي -->
+        <PartDraw x="[DEVICE_WIDTH * 0.30]" y="[DEVICE_HEIGHT * 0.712]"
+                  width="[DEVICE_WIDTH * 0.40]" height="2">
+            <Rectangle x="0" y="0" width="[DEVICE_WIDTH * 0.40]" height="1">
+                <Fill color="#20C9A84C"/>
+            </Rectangle>
+        </PartDraw>
+
+        <!-- ══ Complication 2: الصلاة التالية ══ -->
+        <ComplicationSlot
+            slotId="2"
+            x="[DEVICE_WIDTH * 0.08]" y="[DEVICE_HEIGHT * 0.722]"
+            width="[DEVICE_WIDTH * 0.84]" height="[DEVICE_HEIGHT * 0.13]"
+            supportedTypes="LONG_TEXT SHORT_TEXT RANGED_VALUE">
+
+            <BoundingOval x="0" y="0"
+                          width="[DEVICE_WIDTH * 0.84]"
+                          height="[DEVICE_HEIGHT * 0.13]"
+                          outlinePadding="3"/>
+
+            <Complication type="LONG_TEXT">
+                <!-- اسم الصلاة (يمين) -->
+                <PartText x="0" y="[DEVICE_HEIGHT * 0.015]"
+                          width="[DEVICE_WIDTH * 0.38]"
+                          height="[DEVICE_HEIGHT * 0.10]">
+                    <Text align="CENTER" ellipsis="true">
+                        <Font family="SYNC_TO_DEVICE"
+                              size="[DEVICE_HEIGHT * 0.044]"
+                              color="#FFC9A84C" weight="NORMAL">
+                            <Template>%s<Parameter expression="COMPLICATION.TITLE"/></Template>
+                        </Font>
+                    </Text>
+                </PartText>
+                <!-- فاصل عمودي -->
+                <PartDraw x="[DEVICE_WIDTH * 0.39]" y="[DEVICE_HEIGHT * 0.02]"
+                          width="2" height="[DEVICE_HEIGHT * 0.09]">
+                    <Rectangle x="0" y="0" width="1" height="[DEVICE_HEIGHT * 0.09]">
+                        <Fill color="#25C9A84C"/>
+                    </Rectangle>
+                </PartDraw>
+                <!-- العد التنازلي (يسار) -->
+                <PartText x="[DEVICE_WIDTH * 0.41]" y="[DEVICE_HEIGHT * 0.015]"
+                          width="[DEVICE_WIDTH * 0.43]"
+                          height="[DEVICE_HEIGHT * 0.10]">
+                    <Text align="CENTER" ellipsis="true">
+                        <Font family="SYNC_TO_DEVICE"
+                              size="[DEVICE_HEIGHT * 0.044]"
+                              color="#FFE8C97A" weight="BOLD">
+                            <Template>%s<Parameter expression="COMPLICATION.TEXT"/></Template>
+                        </Font>
+                    </Text>
+                </PartText>
+            </Complication>
+
+            <Complication type="SHORT_TEXT">
+                <PartText x="0" y="[DEVICE_HEIGHT * 0.025]"
+                          width="[DEVICE_WIDTH * 0.84]"
+                          height="[DEVICE_HEIGHT * 0.08]">
+                    <Text align="CENTER" ellipsis="true">
+                        <Font family="SYNC_TO_DEVICE"
+                              size="[DEVICE_HEIGHT * 0.048]"
+                              color="#FFC9A84C" weight="BOLD">
+                            <Template>%s<Parameter expression="COMPLICATION.TEXT"/></Template>
+                        </Font>
+                    </Text>
+                </PartText>
+            </Complication>
+
+            <DefaultProviderPolicy
+                defaultSystemProvider="NEXT_EVENT"
+                defaultSystemProviderType="LONG_TEXT"/>
+        </ComplicationSlot>
+
+        <!-- ══ وضع الاقتصاد (Ambient) ══ -->
+        <Condition>
+            <Expressions>
+                <Expression name="isAmbient">[IS_AMBIENT]</Expression>
+            </Expressions>
+            <Compare expression="isAmbient" value="1">
+                <!-- طبقة تعتيم -->
+                <PartDraw x="0" y="0" width="MATCH_PARENT" height="MATCH_PARENT">
+                    <Arc centerX="[DEVICE_WIDTH/2]" centerY="[DEVICE_HEIGHT/2]"
+                         width="MATCH_PARENT" height="MATCH_PARENT"
+                         startAngle="0" endAngle="360">
+                        <Stroke color="#CC000000" thickness="[DEVICE_WIDTH]"/>
+                    </Arc>
+                </PartDraw>
+                <!-- وقت فقط — لحفظ البطارية -->
+                <PartText x="[DEVICE_WIDTH * 0.05]" y="[DEVICE_HEIGHT * 0.34]"
+                          width="[DEVICE_WIDTH * 0.90]" height="[DEVICE_HEIGHT * 0.20]">
+                    <Text align="CENTER" ellipsis="true">
+                        <Font family="SYNC_TO_DEVICE" size="[DEVICE_HEIGHT * 0.17]"
+                              color="#BBFFFFFF" weight="THIN">
+                            <Template>%s:%s
+                                <Parameter expression="HOURS_0_23_Z"/>
+                                <Parameter expression="MINUTES_Z"/>
+                            </Template>
+                        </Font>
+                    </Text>
+                </PartText>
+                <!-- التاريخ الهجري في وضع الاقتصاد -->
+                <PartText x="[DEVICE_WIDTH * 0.10]" y="[DEVICE_HEIGHT * 0.56]"
+                          width="[DEVICE_WIDTH * 0.80]" height="[DEVICE_HEIGHT * 0.06]">
+                    <Text align="CENTER" ellipsis="true">
+                        <Font family="SYNC_TO_DEVICE" size="[DEVICE_HEIGHT * 0.034]"
+                              color="#70FFFFFF" weight="NORMAL">
+                            <Template>%s %s
+                                <Parameter expression="ISLAMIC_CALENDAR_DAY"/>
+                                <Parameter expression="ISLAMIC_CALENDAR_MONTH_NAME"/>
+                            </Template>
+                        </Font>
+                    </Text>
+                </PartText>
+            </Compare>
+        </Condition>
+
+    </Scene>
+</WatchFace>
