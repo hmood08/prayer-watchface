@@ -6,6 +6,11 @@ android {
     namespace = "com.prayertime.watchface"
     compileSdk = 34
 
+       bundle  {
+        language { enableSplit = false }
+        density { enableSplit = false }
+        abi { enableSplit = false }
+    }
     defaultConfig {
         applicationId = "com.prayertime.watchface"
         minSdk = 30
