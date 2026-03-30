@@ -1,4 +1,4 @@
-name: Build Signed APK
+name: Build Signed AAB
 
 on:
   push:
@@ -32,17 +32,17 @@ jobs:
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > keystore.jks
 
-      - name: Build Release APK
+      - name: Build Release AAB
         run: |
-          ./gradlew assembleRelease \
+          ./gradlew bundleRelease \
             -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/keystore.jks \
             -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} \
             -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
             -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }}
 
-      - name: Upload APK
+      - name: Upload AAB
         uses: actions/upload-artifact@v4
         with:
           name: prayer-watchface-release
-          path: app/build/outputs/apk/release/app-release.apk
+          path: app/build/outputs/bundle/release/app-release.aab
           retention-days: 7
